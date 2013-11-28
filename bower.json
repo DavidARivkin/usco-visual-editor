@@ -1,9 +1,10 @@
 {
   "name": "usco-visual-editor",
+  "version": "0.0.1",
   "private": true,
   "dependencies": {
     "platform": "Polymer/platform#master",
     "polymer": "Polymer/polymer#master",
-    "platform": "Usco/usco-viewer-base#master",
+    "usco-viewer-base": "usco/usco-viewer-base#master"
   }
 }
