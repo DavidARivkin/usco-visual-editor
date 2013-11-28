@@ -4,10 +4,10 @@
 -->
 <link rel="import" href="../components/usco-viewer-base/three-viewer/three-viewer.html">
 
-<polymer-element name="usco-visual-editor" extends="three-viewer" on-longStaticTap="{{onLongStaticTap}}" on-bla="{{onBla}}" >
+<polymer-element name="usco-visual-editor" extends="three-viewer" >
   <template>
     <link rel="stylesheet" type="text/css" href="usco-visual-editor.css">
-    <div id="viewWrapper" touch-action="none" on-pointermove="{{onPointerMove}}" on-pointerdown="{{onPointerDown}}" on-pointerup="{{onPointerUp}}" >
+    <div id="viewWrapper" touch-action="none" on-pointermove="{{onPointerMove}}" on-pointerdown="{{onPointerDown}}" on-pointerup="{{onPointerUp}}" on-longstatictap="{{onLongstatictap}}" on-longmovetap="{{onLongmovetap}}">
       <div id="viewer"></div>
     </div>
   </template>

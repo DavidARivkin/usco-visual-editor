@@ -2,6 +2,12 @@ Polymer('usco-visual-editor', {
 
   selectedObject : null,
 
+  enteredView:function()
+  {
+    this.super();
+    this.addEventListener('longstatictap', this.onLongstatictap);
+  },
+
   //public api
 	addToScene: function ( object )
 	{
@@ -51,13 +57,15 @@ Polymer('usco-visual-editor', {
 			console.log("Failed to add object, to scence: error", error)
 		}
 	},
-  onLongStaticTap:function(event)
+  onLongstatictap:function(event)
   {
-    console.log("long static tap", event);
+    var event = event.impl || event;
+    console.log("LONG STATIC TAP",event.detail.position);
   },
-  onBla:function(event)
+  onLongmovetap:function(event)
   {
-    console.log("blah", event);
+    var event = event.impl || event;
+    console.log("LONG Move TAP",event.detail.position);
   }
 
 });
