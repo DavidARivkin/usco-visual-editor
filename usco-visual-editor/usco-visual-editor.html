@@ -1,7 +1,10 @@
 <!--on-tap="bla" on-hold="bli" on-release="blo" on-holdpulse="ble"-->
-<link rel="import" href="../usco-viewer/usco-viewer.html">
+<!--TODO: replace three-viewer with usco-base-viewer??
+<link rel="import" href="components/usco-viewer-base/three-viewer/three-viewer.html">
+-->
+<link rel="import" href="../components/usco-viewer-base/three-viewer/three-viewer.html">
 
-<polymer-element name="usco-visual-editor" extends="usco-base-viewer">
+<polymer-element name="usco-visual-editor" extends="three-viewer" on-longStaticTap="{{onLongStaticTap}}" on-bla="{{onBla}}" >
   <template>
     <link rel="stylesheet" type="text/css" href="usco-visual-editor.css">
     <div id="viewWrapper" touch-action="none" on-pointermove="{{onPointerMove}}" on-pointerdown="{{onPointerDown}}" on-pointerup="{{onPointerUp}}" >

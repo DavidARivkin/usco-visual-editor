@@ -9,7 +9,7 @@ Polymer('usco-visual-editor', {
 		{
 			this.rootAssembly.add( object );
 
-      //just a test
+      //just a test to display parent children relationships
       for( var i =0; i<object.children.length;i++)
       {
         var child = object.children[i];
@@ -19,6 +19,14 @@ Polymer('usco-visual-editor', {
             var lineGeometry = new THREE.Geometry();
 	          var vertArray = lineGeometry.vertices;
 	          vertArray.push( new THREE.Vector3(), child.position.clone() );
+
+            //in order to center the arrow, reduce by bounding sphere radius of child & parent
+            console.log("BB",child.geometry.boundingSphere);
+            var childSub = child.position.clone().setLength(object.geometry.boundingSphere.radius);
+            var parentSub =  child.position.clone().setLength(child.geometry.boundingSphere.radius);
+            console.log("parentSub",parentSub.length(), "childSub",childSub.length(),"bla",object.geometry.boundingSphere.radius, child.geometry.boundingSphere.radius);
+            var arrowPosition = child.position.clone().sub(parentSub).add(childSub);
+
 	          lineGeometry.computeLineDistances();
 	          var lineMaterial = new THREE.LineDashedMaterial( { color: 0x00cc00, dashSize: 4, gapSize: 2 } );
 	          var line = new THREE.Line( lineGeometry, lineMaterial );
@@ -27,7 +35,7 @@ Polymer('usco-visual-editor', {
             var arrowHead = new THREE.Mesh(new THREE.CylinderGeometry(0, 4, 15, 5, 5, false), new THREE.MeshBasicMaterial({color:0x00cc00}));
             //arrowHead.up = new THREE.Vector3(0,1,0);
 
-            arrowHead.position = child.position.clone().divideScalar( 2 );//this.arrowHeadRootPosition;
+            arrowHead.position = arrowPosition.divideScalar( 2 );//this.arrowHeadRootPosition;
             arrowHead.lookAt( child.position );
             arrowHead.rotateX(Math.PI/2);
 	          line.add( arrowHead );
@@ -42,5 +50,14 @@ Polymer('usco-visual-editor', {
 		{
 			console.log("Failed to add object, to scence: error", error)
 		}
-	}
+	},
+  onLongStaticTap:function(event)
+  {
+    console.log("long static tap", event);
+  },
+  onBla:function(event)
+  {
+    console.log("blah", event);
+  }
+
 });

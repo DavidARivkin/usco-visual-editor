@@ -3,20 +3,20 @@
     <title>Usco visual editor example</title>
       <script src="components/platform/platform.js"></script>
       <link rel="import" href="components/polymer/polymer.html">
-      <link rel="import" href="three-viewer/three-viewer.html">
+      <link rel="import" href="usco-visual-editor/usco-visual-editor.html">
 
       <style>
-        three-viewer{
+        usco-visual-editor{
           left:0px;top:0px;width:100%;height:100%;background-color:#ffffff;
         }
       </style>
   </head>
 <body>
-  <usco-editor orientation="diagonal" showShadows postProcess cameraUp="[0,0,1]"></usco-editor>
+  <usco-visual-editor orientation="diagonal" showShadows postProcess></usco-visual-editor>
 
   <script>
     window.addEventListener('WebComponentsReady', function() {
-	    var uscoEditor = document.querySelector('three-viewer');
+	    var uscoEditor = document.querySelector('usco-visual-editor');
       //example : adding 3D shapes to viewer''
       var geometry = new THREE.CubeGeometry( 100, 100, 100 ); 
       geometry.computeCentroids();
