@@ -18,18 +18,18 @@
     window.addEventListener('WebComponentsReady', function() {
 	    var uscoEditor = document.querySelector('usco-visual-editor');
       //example : adding 3D shapes to viewer''
-      var geometry = new THREE.CubeGeometry( 100, 100, 100 ); 
+      var geometry = new THREE.CubeGeometry( 20, 20, 20 ); 
       geometry.computeCentroids();
     	geometry.computeBoundingSphere();
       geometry.computeBoundingBox();
 	    var material = new THREE.MeshLambertMaterial( {opacity:1,transparent:true,color: 0x0088ff} ); 
 	    var cube = new THREE.Mesh(geometry, material);
       cube.name = "TestCube";
-      cube.position.set(-200,60,60);
+      cube.position.set(-100,20,30);
       //add to scene
       //uscoEditor.addToScene(cube);
 
-      var geometry = new THREE.SphereGeometry(25, 20,20);
+      var geometry = new THREE.SphereGeometry(12, 20,20);
       geometry.computeCentroids();
     	geometry.computeBoundingSphere();
       geometry.computeBoundingBox();
@@ -37,14 +37,10 @@
       var sphere = new THREE.Mesh(geometry, material);
       sphere.name = "testSphere";
       sphere.position.set(50,0,30);
-      sphere.castShadow =  this.showShadows;
-      sphere.receiveShadow = this.showShadows;
 
       sphere.add(cube);
-       //add grid
-	     //this.grid = new THREE.CustomGridHelper(200,10,this.cameraUp)
-	    //this.scene.add(this.grid);
       uscoEditor.addToScene(sphere);
+
     });
       
     

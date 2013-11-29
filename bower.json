@@ -5,6 +5,7 @@
   "dependencies": {
     "platform": "Polymer/platform#master",
     "polymer": "Polymer/polymer#master",
-    "usco-viewer-base": "usco/usco-viewer-base#master"
+    "usco-viewer-base": "usco/usco-viewer-base#master",
+    "usco-command-manager" : "usco/usco-command-manager#master"
   }
 }

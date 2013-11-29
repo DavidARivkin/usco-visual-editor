@@ -1,21 +1,39 @@
 Polymer('usco-visual-editor', {
-
   selectedObject : null,
-
+  showGrid: true,
   enteredView:function()
   {
     this.super();
     this.addEventListener('longstatictap', this.onLongstatictap);
+
+    //add grid
+    this.grid = new THREE.CustomGridHelper(200,10,this.cameraUp);
+    this.grid.toggle(this.showGrid)
+	  this.scene.add(this.grid);
   },
 
   //public api
-	addToScene: function ( object )
+  //event handlers
+  onLongstatictap:function(event)
+  {
+    var event = event.impl || event;
+    console.log("LONG STATIC TAP",event.detail.position);
+  },
+  onLongmovetap:function(event)
+  {
+    var event = event.impl || event;
+    console.log("LONG Move TAP",event.detail.position);
+  },
+  //attribute change handlers
+  showGridChanged:function()
 	{
-		try
-		{
-			this.rootAssembly.add( object );
-
-      //just a test to display parent children relationships
+		console.log("showGridChanged");//, this.showGrid);
+		this.grid.toggle(this.showGrid)
+	},
+  //helpers
+  _drawParentChildLinks:function(object)
+  {
+    //just a test to display parent children relationships
       for( var i =0; i<object.children.length;i++)
       {
         var child = object.children[i];
@@ -51,21 +69,5 @@ Polymer('usco-visual-editor', {
             object.add(line);
         }
        }
-		}
-		catch(error)
-		{
-			console.log("Failed to add object, to scence: error", error)
-		}
-	},
-  onLongstatictap:function(event)
-  {
-    var event = event.impl || event;
-    console.log("LONG STATIC TAP",event.detail.position);
-  },
-  onLongmovetap:function(event)
-  {
-    var event = event.impl || event;
-    console.log("LONG Move TAP",event.detail.position);
-  }
-
+    }
 });

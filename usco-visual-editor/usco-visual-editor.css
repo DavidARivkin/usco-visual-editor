@@ -36,6 +36,11 @@
    }
 }
 
+history-editor{
+  color:black;
+
+}
+
 .unselectable
 {
   -webkit-touch-callout: none;
